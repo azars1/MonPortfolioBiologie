@@ -1,0 +1,28 @@
+MISE À JOUR DU PORTFOLIO SBI4U — DÉTAILS CRÉATIFS
+
+Cette version comprend les fonctionnalités interactives précédentes, ainsi que les petits détails visuels demandés :
+- curseur personnalisé rose sur ordinateur (le curseur normal reste sur les appareils tactiles) ;
+- effets de survol subtils sur les cartes, boutons et liens ;
+- petites étiquettes scientifiques flottantes dans les en-têtes des pages d’unités ;
+- bouton de son facultatif avec une petite note douce (le son est désactivé par défaut) ;
+- bouton « surprise biologique » qui révèle un fait intéressant ;
+- indicateur de progression de lecture en haut et pourcentage exploré en bas ;
+- bouton de retour en haut, mode sombre et glossaire interactif ;
+- animations discrètes au défilement.
+
+INSTALLATION
+1. Télécharge et décompresse le ZIP.
+2. Ouvre le dossier décompressé : portfolio_sbi4u_site.
+3. Copie TOUS les fichiers de ce dossier dans le dossier de ton projet VS Code.
+4. Si ton Mac demande de remplacer les fichiers existants, choisis « Remplacer ».
+5. Garde portfolio-extras.css et portfolio-extras.js au même niveau que index.html et les autres pages HTML.
+6. Dans VS Code, ouvre index.html avec Live Server et actualise la page.
+
+ACCESSIBILITÉ
+- Le curseur personnalisé est limité aux ordinateurs avec souris; les écrans tactiles gardent leur comportement normal.
+- Les sons sont facultatifs et désactivés par défaut.
+- Les animations sont réduites si le système de l’utilisateur demande une réduction des mouvements.
+
+IMPORTANT
+- Les mini-simulations sont des modèles pédagogiques simplifiés, pas des données expérimentales.
+- Vérifie les explications scientifiques et personnalise les sections de recherche/réflexion pour qu'elles correspondent à ton propre travail et aux attentes de ton enseignant.

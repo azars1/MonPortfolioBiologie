@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portfolio électronique de biologie SBI4U — apprentissages, recherche et réflexion.">
+  <title>Portfolio de biologie | SBI4U</title>
+  <style>
+    :root {
+      --site-background: #fff8fa;
+      --rose: #b85f7d;
+      --rose-deep: #74384e;
+      --rose-soft: #f6dfe7;
+      --rose-pale: #fff0f4;
+      --plum: #593847;
+      --ink: #3d3037;
+      --muted: #786873;
+      --line: #efd7df;
+      --white: #ffffff;
+      --shadow: 0 16px 44px rgba(116, 56, 78, 0.09);
+      --radius: 22px;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body { margin: 0; background: var(--site-background); color: var(--ink); font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; line-height: 1.65; }
+    a { color: inherit; }
+    .topbar { position: sticky; top: 0; z-index: 10; background: rgba(255,248,250,.94); backdrop-filter: blur(14px); border-bottom: 1px solid var(--line); }
+    .nav-wrap { width: min(1120px, calc(100% - 40px)); margin: auto; min-height: 74px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: flex; align-items: center; gap: 11px; text-decoration: none; font-size: .84rem; letter-spacing: .09em; font-weight: 800; color: var(--rose-deep); }
+    .brand-mark { display: grid; place-items: center; width: 39px; height: 39px; border-radius: 14px; background: var(--rose-soft); font-size: 1.25rem; }
+    .nav-links { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: .88rem; font-weight: 650; padding: 9px 12px; border-radius: 999px; transition: background .2s, color .2s; }
+    .nav-links a:hover, .nav-links a:focus-visible { background: var(--rose-soft); color: var(--rose-deep); outline: none; }
+    .menu-toggle { display: none; border: 1px solid var(--line); background: var(--white); color: var(--rose-deep); border-radius: 12px; padding: 9px 12px; font: inherit; }
+    main { overflow: hidden; }
+    .hero { width: min(1120px, calc(100% - 40px)); margin: 42px auto 68px; display: grid; grid-template-columns: 1.03fr .97fr; align-items: center; gap: clamp(28px, 5vw, 70px); }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--rose); text-transform: uppercase; letter-spacing: .16em; font-size: .76rem; font-weight: 850; }
+    .eyebrow::before { content: ""; display: inline-block; width: 25px; height: 2px; background: var(--rose); }
+    h1, h2, h3, p { margin-top: 0; }
+    h1 { font-family: Georgia, "Times New Roman", serif; font-size: clamp(2.9rem, 6vw, 5.2rem); line-height: .99; letter-spacing: -.045em; color: var(--plum); font-weight: 500; margin: 19px 0 22px; }
+    h1 em { color: var(--rose); font-weight: 500; }
+    .hero-copy { max-width: 510px; color: var(--muted); font-size: 1.07rem; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 28px; }
+    .button { display: inline-flex; align-items: center; justify-content: center; gap: 9px; text-decoration: none; border: 1px solid var(--rose); background: var(--rose); color: white; border-radius: 999px; padding: 12px 19px; font-weight: 750; font-size: .93rem; transition: transform .2s, background .2s; }
+    .button:hover { transform: translateY(-2px); background: var(--rose-deep); }
+    .button.secondary { background: transparent; color: var(--rose-deep); border-color: var(--line); }
+    .button.secondary:hover { background: var(--rose-pale); }
+    .hero-art { position: relative; min-height: 390px; display: grid; place-items: center; }
+    .art-backdrop { position: absolute; inset: 8% 3% 3% 9%; border-radius: 47% 47% 28px 28px; background: linear-gradient(145deg, #f9dce6, #fcecf1 55%, #f2cbd9); transform: rotate(2deg); }
+    .art-card { position: relative; width: min(84%, 390px); padding: 28px; border: 1px solid rgba(255,255,255,.85); border-radius: 26px; background: rgba(255,255,255,.83); box-shadow: var(--shadow); transform: rotate(-2deg); }
+    .art-card-top { display: flex; align-items: center; justify-content: space-between; color: var(--rose-deep); font-size: .76rem; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .cell-illustration { width: 100%; display: block; margin: 13px auto 10px; }
+    .art-caption { color: var(--muted); font-size: .85rem; margin-bottom: 0; }
+    .sparkle { position: absolute; color: var(--rose); font-size: 2rem; }
+    .sparkle.one { top: 6%; right: 11%; }
+    .sparkle.two { bottom: 8%; left: 4%; font-size: 1.35rem; }
+    .section { padding: 72px 20px; }
+    .section.tinted { background: #fff0f4; border-top: 1px solid #f8e2e9; border-bottom: 1px solid #f8e2e9; }
+    .container { width: min(1120px, 100%); margin: auto; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
+    .section-heading h2 { font-family: Georgia, "Times New Roman", serif; color: var(--plum); font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.08; letter-spacing: -.03em; font-weight: 500; margin: 9px 0 0; }
+    .section-heading p { max-width: 440px; color: var(--muted); margin-bottom: 4px; }
+    .letter-panel { display: grid; grid-template-columns: 110px 1fr; gap: 14px; background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 42px); box-shadow: var(--shadow); }
+    .letter-icon { width: 74px; height: 74px; display: grid; place-items: center; border-radius: 24px; background: var(--rose-pale); font-size: 2rem; }
+    .letter-panel h3 { color: var(--rose-deep); font-size: 1.1rem; margin-bottom: 9px; }
+    .letter-panel p { color: var(--muted); margin-bottom: 0; }
+    .unit-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .unit-card { position: relative; min-height: 240px; padding: 25px; border-radius: var(--radius); border: 1px solid var(--line); background: white; display: flex; flex-direction: column; text-decoration: none; transition: transform .22s, box-shadow .22s, border-color .22s; }
+    .unit-card:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #dba5b7; }
+    .unit-number { display: grid; place-items: center; width: 42px; height: 42px; border-radius: 15px; background: var(--rose-pale); color: var(--rose-deep); font-weight: 850; font-size: .87rem; margin-bottom: 21px; }
+    .unit-card h3 { color: var(--plum); font-family: Georgia, "Times New Roman", serif; font-size: 1.45rem; line-height: 1.18; font-weight: 500; margin-bottom: 10px; }
+    .unit-card p { color: var(--muted); font-size: .91rem; margin-bottom: 20px; }
+    .card-link { color: var(--rose); font-size: .87rem; font-weight: 800; margin-top: auto; }
+    .extras-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .extra-card { background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: 27px; }
+    .extra-card-link { display:flex; flex-direction:column; text-decoration:none; transition:transform .22s, box-shadow .22s, border-color .22s; }
+    .extra-card-link:hover { transform:translateY(-4px); box-shadow:var(--shadow); border-color:#dba5b7; }
+    .extra-card-link .card-link { display:block; margin-top:20px; }
+    .extra-icon { width: 48px; height: 48px; border-radius: 16px; display: grid; place-items: center; background: var(--rose-pale); font-size: 1.4rem; margin-bottom: 19px; }
+    .extra-card h3 { color: var(--plum); margin-bottom: 8px; font-size: 1.1rem; }
+    .extra-card p { color: var(--muted); font-size: .91rem; margin-bottom: 0; }
+    .reflection { display: grid; grid-template-columns: .8fr 1.2fr; gap: 30px; align-items: start; }
+    .reflection-intro { background: var(--rose-deep); color: white; border-radius: var(--radius); padding: 31px; }
+    .reflection-intro h2 { font-family: Georgia, "Times New Roman", serif; font-size: 2rem; font-weight: 500; line-height: 1.15; }
+    .reflection-intro p { color: #f4dfe6; margin-bottom: 0; }
+    .reflection-list { display: grid; gap: 12px; }
+    .reflection-row { display: flex; align-items: start; gap: 16px; background: white; border: 1px solid var(--line); border-radius: 17px; padding: 20px; }
+    .reflection-row .small-icon { color: var(--rose); font-size: 1.2rem; }
+    .reflection-row strong { display: block; color: var(--plum); margin-bottom: 3px; }
+    .reflection-row span { color: var(--muted); font-size: .9rem; }
+    footer { padding: 28px 20px; border-top: 1px solid var(--line); }
+    .footer-inner { width: min(1120px, 100%); margin: auto; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; color: var(--muted); font-size: .85rem; }
+    .footer-inner strong { color: var(--rose-deep); }
+    .note { font-size: .83rem; color: var(--muted); margin-top: 17px; }
+    @media (max-width: 850px) {
+      .nav-wrap { width: min(100% - 28px, 1120px); }
+      .menu-toggle { display: inline-flex; }
+      .nav-links { display: none; position: absolute; top: 73px; left: 0; right: 0; background: var(--site-background); border-bottom: 1px solid var(--line); padding: 12px 18px 18px; flex-direction: column; align-items: stretch; }
+      .nav-links.open { display: flex; }
+      .nav-links a { padding: 11px 14px; }
+      .hero { grid-template-columns: 1fr; margin-top: 35px; gap: 12px; }
+      .hero-art { min-height: 340px; }
+      .section-heading { display: block; }
+      .section-heading p { margin-top: 13px; }
+      .unit-grid { grid-template-columns: repeat(2, 1fr); }
+      .extras-grid { grid-template-columns: 1fr; }
+      .reflection { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 560px) {
+      .hero, .nav-wrap { width: calc(100% - 30px); }
+      h1 { font-size: 3.15rem; }
+      .hero-art { min-height: 300px; }
+      .art-card { padding: 20px; width: 88%; }
+      .section { padding: 55px 15px; }
+      .unit-grid { grid-template-columns: 1fr; }
+      .unit-card { min-height: 205px; }
+      .letter-panel { grid-template-columns: 1fr; }
+      .section-heading h2 { font-size: 2.35rem; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; } }
+  
+    .page-hero { width:min(1120px,calc(100% - 40px)); margin:46px auto 30px; padding:clamp(28px,5vw,58px); background:linear-gradient(135deg,#fff0f4,#fff); border:1px solid var(--line); border-radius:30px; }
+    .page-hero h1 { max-width:850px; font-size:clamp(2.7rem,6vw,4.7rem); }
+    .page-hero p { max-width:760px; color:var(--muted); font-size:1.05rem; }
+    .breadcrumb { font-size:.86rem; color:var(--muted); margin-bottom:15px; }
+    .breadcrumb a { color:var(--rose-deep); text-decoration:none; }
+    .unit-nav { display:flex; flex-wrap:wrap; gap:8px; margin-top:23px; }
+    .unit-nav a { border:1px solid var(--line); border-radius:999px; padding:8px 13px; background:white; text-decoration:none; font-size:.83rem; color:var(--rose-deep); }
+    .unit-nav a[aria-current="page"] { background:var(--rose); color:white; border-color:var(--rose); }
+    .content-grid { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
+    .content-card { background:#fff; border:1px solid var(--line); border-radius:var(--radius); padding:clamp(22px,3vw,30px); box-shadow:var(--shadow); }
+    .content-card h2 { font-family:Georgia,"Times New Roman",serif; font-size:1.65rem; font-weight:500; color:var(--plum); line-height:1.15; }
+    .content-card h3 { color:var(--rose-deep); font-size:1rem; }
+    .content-card p, .content-card li { color:var(--muted); }
+    .content-card ul { padding-left:1.2rem; }
+    .placeholder { padding:13px 15px; border-left:3px solid #d99ab4; background:var(--rose-pale); border-radius:0 12px 12px 0; color:var(--plum); font-size:.92rem; }
+    .concept-canvas { min-height:240px; padding:25px; border:1px dashed #dba5b7; border-radius:18px; background:radial-gradient(circle at 15% 20%,#fff0f4 0 5%,transparent 6%),radial-gradient(circle at 80% 35%,#f6dfe7 0 7%,transparent 8%),#fff; display:flex; flex-wrap:wrap; justify-content:center; align-items:center; gap:14px; }
+    .concept-node { padding:10px 14px; border-radius:999px; border:1px solid #dfb5c4; background:white; color:var(--rose-deep); font-weight:700; font-size:.9rem; }
+    .page-footer-links { display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px; margin-top:30px; }
+    @media(max-width:700px){.content-grid{grid-template-columns:1fr}.page-hero{width:calc(100% - 30px);margin-top:25px}.page-hero h1{font-size:2.8rem}}
+</style>
+<link rel="stylesheet" href="portfolio-extras.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="nav-wrap">
+      <a class="brand" href="#accueil" aria-label="Accueil du portfolio"><span class="brand-mark">✿</span><span>PORTFOLIO<br>SBI4U · BIOLOGIE</span></a>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
+      <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
+        <a href="#accueil">Accueil</a>
+        <a href="#lettre">Lettre d’ouverture</a>
+        <a href="#unites">Unités</a>
+        <a href="#cours">Au-delà des unités</a>
+        <a href="#reflexion">Réflexion</a>
+        <a href="bibliographie.html">Bibliographie</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="accueil">
+      <div>
+        <span class="eyebrow">Mon parcours scientifique</span>
+        <h1>Explorer la<br><em>science de la vie.</em></h1>
+        <p class="hero-copy">Bienvenue dans mon portfolio électronique de biologie. Un espace pour présenter mes apprentissages, découvrir les personnes qui font avancer la science et faire des liens entre la biologie et le monde qui nous entoure.</p>
+        <div class="hero-actions">
+          <a class="button" href="#unites">Explorer les unités <span aria-hidden="true">↗</span></a>
+          <a class="button secondary" href="#lettre">Lire ma lettre</a>
+        </div>
+      </div>
+      <div class="hero-art" aria-label="Illustration décorative d’une cellule">
+        <div class="art-backdrop"></div>
+        <span class="sparkle one" aria-hidden="true">✳</span>
+        <span class="sparkle two" aria-hidden="true">✦</span>
+        <div class="art-card">
+          <div class="art-card-top"><span>Biologie · SBI4U</span><span>01 / 05</span></div>
+          <svg class="cell-illustration" viewBox="0 0 360 270" role="img" aria-label="Illustration stylisée d’une cellule avec noyau et organites">
+            <defs>
+              <linearGradient id="cellFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#f8d9e4"/><stop offset="1" stop-color="#efb9cd"/></linearGradient>
+              <linearGradient id="nucleusFill" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#d79bb8"/><stop offset="1" stop-color="#a96891"/></linearGradient>
+            </defs>
+            <path d="M47 132 C38 79 81 35 139 40 C183 16 251 43 278 78 C319 105 310 171 274 199 C237 239 172 224 131 231 C78 228 38 187 47 132Z" fill="url(#cellFill)" stroke="#bd7897" stroke-width="3"/>
+            <path d="M63 129 C55 87 92 54 139 57 C181 36 237 57 260 86 C292 110 287 163 257 189 C225 218 173 207 135 215 C91 210 56 177 63 129Z" fill="#fff3f6" stroke="#d99ab4" stroke-width="2" stroke-dasharray="4 5"/>
+            <ellipse cx="176" cy="127" rx="48" ry="42" fill="url(#nucleusFill)" stroke="#925578" stroke-width="2"/>
+            <ellipse cx="188" cy="123" rx="15" ry="13" fill="#75405f" opacity=".8"/>
+            <path d="M88 102 C99 82 120 86 129 103 C135 116 122 127 105 121 C94 117 91 111 88 102Z" fill="#f0b0c7" stroke="#c47d9d" stroke-width="2"/>
+            <path d="M218 162 C232 144 255 154 251 171 C246 187 222 187 218 162Z" fill="#e7a6c0" stroke="#bd7897" stroke-width="2"/>
+            <path d="M103 163 C112 145 134 148 140 163 C146 179 126 191 111 181Z" fill="#f2c2d3" stroke="#bd7897" stroke-width="2"/>
+            <path d="M223 85 C239 72 257 84 250 98 C242 111 224 105 223 85Z" fill="#dca1bc" stroke="#bd7897" stroke-width="2"/>
+            <g fill="#a65e83"><circle cx="157" cy="82" r="3"/><circle cx="202" cy="187" r="3"/><circle cx="270" cy="129" r="3"/><circle cx="85" cy="145" r="3"/><circle cx="150" cy="191" r="3"/><circle cx="205" cy="65" r="3"/></g>
+            <path d="M75 67 Q88 56 101 68 M264 198 Q277 187 286 199" fill="none" stroke="#fff" stroke-width="4" stroke-linecap="round"/>
+          </svg>
+          <p class="art-caption">Observer, questionner, comprendre : la biologie nous aide à explorer le vivant.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="lettre">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Pour commencer</span><h2>Lettre d’ouverture</h2></div>
+          <p>Une introduction personnelle à mes intérêts, à mes objectifs et à ma façon d’apprendre.</p>
+        </div>
+        <div class="letter-panel">
+          <div class="letter-icon" aria-hidden="true">✉</div>
+          <div>
+            <h3>À M. Mark</h3>
+            <p><strong>Lettre d'ouverture</strong> 
+              <div> </div>
+
+Chère monsieur Mark,
+<div> </div>
+Je m'appelle Sarah et je suis très heureuse de commencer ce cours de biologie de 12e année. En dehors de l'école, j'aime pratiquer des activités sportives et créatives. J'aime particulièrement jouer au soccer, faire du vélo et du patin à roues alignées pendant l'été, ainsi que faire du patin sur glace. Pendant mon temps libre, j'aime également regarder des films et des séries télévisées et faire de la pâtisserie. Je suis une personne curieuse, organisée et collaborative. J'aime apprendre de nouvelles choses, approfondir ma compréhension des sujets qui m'intéressent et faire des liens entre ce que j'apprends en classe et le monde réel. <div> </div>
+
+J'ai choisi de suivre le cours de biologie de 12e année parce que je souhaite approfondir mes connaissances scientifiques et mieux comprendre les mécanismes qui rendent la vie possible. À mon avis, la biologie est une discipline essentielle puisqu'elle étudie les êtres vivants, leur fonctionnement et leurs interactions avec leur environnement. Elle nous permet non seulement de comprendre notre propre organisme, mais aussi de mieux saisir les enjeux scientifiques, médicaux et environnementaux de notre société.<div> </div>
+
+Ce cours m'intéresse également en raison de mes projets d'avenir. Je considère plusieurs domaines d'études liés aux sciences de la santé et aux sciences de la vie. Parmi les carrières qui m'intéressent figurent l'orthophonie, la dentisterie et la recherche pharmaceutique, particulièrement le développement de médicaments. Je demeure toutefois ouverte à découvrir d'autres possibilités au cours de mes études. J'espère que les différents sujets abordés cette année m'aideront à mieux connaître mes intérêts et à préciser mes objectifs professionnels.<div> </div>
+
+Grâce à mes cours de sciences précédents, j'ai déjà acquis certaines connaissances qui me seront utiles cette année. Mon cours de biologie de 11e année m'a permis de développer une compréhension de base de la cellule, de ses structures et de ses fonctions. J'ai également étudié plusieurs notions de chimie et de physique qui peuvent être liées aux processus biologiques. Je pourrai donc m'appuyer sur ces connaissances pour mieux comprendre des sujets plus complexes, comme les processus métaboliques, la génétique moléculaire et l'homéostasie.<div> </div>
+
+Pour réussir dans ce cours, je compte continuer à utiliser des stratégies d'apprentissage qui me permettent de bien comprendre la matière avant de la mémoriser. J'aime organiser mes notes, créer des guides d'étude, utiliser des ressources visuelles et regarder des vidéos explicatives lorsque certains concepts sont plus difficiles à comprendre. Je trouve également utile de faire des exercices pratiques et de revoir régulièrement la matière afin de consolider mes connaissances. Cette année, j'aimerais surtout améliorer ma capacité à expliquer les concepts scientifiques avec précision et à établir des liens entre les différentes unités.<div> </div>
+
+En terminant, mon objectif est de développer une compréhension approfondie de la biologie et de découvrir comment les connaissances scientifiques peuvent être appliquées dans la vie quotidienne et dans différentes professions. J'espère que ce cours me permettra de relever de nouveaux défis, de développer mon esprit critique et de mieux préparer mon parcours postsecondaire.
+
+Je vous remercie de prendre le temps de consulter mon portfolio. J'espère qu'il représentera bien mon cheminement, mes apprentissages et les efforts que j'aurai consacrés à ce cours.
+<div> </div>
+Cordialement,<div> </div>
+
+<strong style="color: #8b1e3d;">Sarah Azar</strong></p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tinted" id="unites">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Le cœur du portfolio</span><h2>Les cinq unités</h2></div>
+                 </div>
+        <div class="unit-grid">
+          <a class="unit-card" href="biochimie.html"><span class="unit-number">01</span><h3>Biochimie cellulaire</h3><p>Les molécules et les réactions chimiques essentielles au vivant.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
+          <a class="unit-card" href="metabolisme.html"><span class="unit-number">02</span><h3>Processus métaboliques</h3><p>Les transformations d’énergie et les réactions qui soutiennent la vie.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
+          <a class="unit-card" href="genetique.html"><span class="unit-number">03</span><h3>Génétique moléculaire</h3><p>L’information génétique, son expression et sa transmission.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
+          <a class="unit-card" href="homeostasie.html"><span class="unit-number">04</span><h3>Homéostasie</h3><p>Les mécanismes qui contribuent au maintien de l’équilibre interne.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
+          <a class="unit-card" href="populations.html"><span class="unit-number">05</span><h3>Dynamique des populations</h3><p>Les populations, leurs changements et leurs interactions avec l’environnement.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
+        </div>
+        <p class="note">Chaque carte ouvre une page indépendante pour cette unité. Les espaces de contenu sont prêts à être remplis au fil du cours.</p>
+      </div>
+    </section>
+
+    <section class="section" id="cours">
+      <div class="container">
+        <div class="section-heading">
+          <div><span class="eyebrow">Voir les liens</span><h2>Au-delà des unités</h2></div>
+          <p>Des sections complémentaires pour faire ressortir les liens entre les concepts et documenter mon parcours dans le cours.</p>
+        </div>
+        <div class="extras-grid">
+          <a class="extra-card extra-card-link" href="carte-cours.html"><div class="extra-icon" aria-hidden="true">⌘</div><h3>Carte conceptuelle du cours</h3><p>Une grande page réservée à la carte globale qui relie les concepts clés des cinq unités, avec des connecteurs et des relations non linéaires.</p><span class="card-link">Ouvrir la page ↗</span></a>
+          <a class="extra-card extra-card-link" href="photos.html"><div class="extra-icon" aria-hidden="true">♡</div><h3>Collage de photos</h3><p>Une galerie plus spacieuse pour les photos prises pendant le cours, chacune accompagnée d’une date et d’une courte description.</p><span class="card-link">Ouvrir la page ↗</span></a>
+          <a class="extra-card extra-card-link" href="bibliographie.html"><div class="extra-icon" aria-hidden="true">▤</div><h3>Bibliographie</h3><p>Une page complète pour organiser les sources des cinq unités, la carte conceptuelle et les autres éléments du portfolio.</p><span class="card-link">Ouvrir la page ↗</span></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section tinted" id="reflexion">
+      <div class="container reflection">
+        <div class="reflection-intro"><span class="eyebrow" style="color:#f4b8ce">Pour conclure</span><h2>Ce que j’emporte avec moi.</h2><p>Une réflexion sur les connaissances acquises, les stratégies qui m’ont aidée et les liens entre la biologie et mon avenir.</p></div>
+        <div class="reflection-list">
+          <div class="reflection-row"><span class="small-icon" aria-hidden="true">✧</span><div><strong>Lettre de clôture</strong><span>Réflexion personnelle sur le cours, mon apprentissage, les stratégies utilisées et des suggestions d’amélioration.</span></div></div>
+          <div class="reflection-row"><span class="small-icon" aria-hidden="true">⌁</span><div><strong>Liens avec le monde réel</strong><span>Connexions entre les concepts scientifiques, les recherches actuelles, les carrières et les expériences vécues en classe.</span></div></div>
+          <div class="reflection-row"><span class="small-icon" aria-hidden="true">✓</span><div><strong>Vérification finale</strong><span>Navigation fonctionnelle, contenu reformulé dans mes propres mots, cartes conceptuelles lisibles et sources complètes.</span></div></div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="footer-inner"><span><strong>Portfolio de biologie · SBI4U</strong></span><span>Créé avec soin · <span id="year"></span></span></div>
+  </footer>
+  <script>
+    const menuToggle = document.getElementById('menuToggle');
+    const navLinks = document.getElementById('navLinks');
+    menuToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      menuToggle.setAttribute('aria-expanded', String(isOpen));
+      menuToggle.textContent = isOpen ? '✕ Fermer' : '☰ Menu';
+    });
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.textContent = '☰ Menu';
+      });
+    });
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+<script src="portfolio-extras.js"></script>
+</body>
+</html>
