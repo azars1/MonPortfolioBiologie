@@ -60,7 +60,7 @@
     .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 24px; margin-bottom: 30px; }
     .section-heading h2 { font-family: Georgia, "Times New Roman", serif; color: var(--plum); font-size: clamp(2.1rem, 4vw, 3.2rem); line-height: 1.08; letter-spacing: -.03em; font-weight: 500; margin: 9px 0 0; }
     .section-heading p { max-width: 440px; color: var(--muted); margin-bottom: 4px; }
-    .letter-panel { display: grid; grid-template-columns: 110px 1fr; gap: 14px; background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 42px); box-shadow: var(--shadow); }
+    .letter-panel { display: grid; grid-template-columns: .32fr 1fr; gap: 28px; background: white; border: 1px solid var(--line); border-radius: var(--radius); padding: clamp(24px, 4vw, 42px); box-shadow: var(--shadow); }
     .letter-icon { width: 74px; height: 74px; display: grid; place-items: center; border-radius: 24px; background: var(--rose-pale); font-size: 2rem; }
     .letter-panel h3 { color: var(--rose-deep); font-size: 1.1rem; margin-bottom: 9px; }
     .letter-panel p { color: var(--muted); margin-bottom: 0; }
@@ -141,7 +141,7 @@
 </style>
 <link rel="stylesheet" href="portfolio-extras.css">
 </head>
-<body>
+<body><div class="cinematic-intro" id="cinematicIntro" role="dialog" aria-label="Bienvenue dans le portfolio SBI4U"><div class="intro-orbit orbit-one"></div><div class="intro-orbit orbit-two"></div><div class="intro-molecule">✧</div><p class="extra-kicker">Une exploration du vivant</p><h1>Bienvenue dans<br><em>mon univers biologique.</em></h1><p>Des molécules aux écosystèmes, découvrons les liens qui rendent la vie possible.</p><button class="extra-cta" id="enterPortfolio">Entrer dans le portfolio ✦</button><button class="intro-skip" id="skipIntro">Passer l’introduction</button></div>
   <header class="topbar">
     <div class="nav-wrap">
       <a class="brand" href="#accueil" aria-label="Accueil du portfolio"><span class="brand-mark">✿</span><span>PORTFOLIO<br>SBI4U · BIOLOGIE</span></a>
@@ -195,7 +195,8 @@
       </div>
     </section>
 
-    <section class="section" id="lettre">
+    <section class="extra-panel extra-reveal"><span class="extra-kicker">Parcours interactif</span><h2>Explore les cinq univers du vivant</h2><div class="timeline-track"><div><b>01</b><strong>Biochimie</strong><span>Les molécules de la vie</span></div><div><b>02</b><strong>Métabolisme</strong><span>L’énergie en action</span></div><div><b>03</b><strong>Génétique</strong><span>L’information biologique</span></div><div><b>04</b><strong>Homéostasie</strong><span>L’équilibre interne</span></div><div><b>05</b><strong>Populations</strong><span>La vie en interaction</span></div></div><div class="feature-launches"><a class="extra-cta" href="laboratoire-final.html">Défi final du laboratoire</a><a class="extra-cta" href="escape-room.html">Entrer dans l’escape room</a><a class="extra-cta" href="certificat.html">Voir le certificat</a></div></section>
+<section class="section" id="lettre">
       <div class="container">
         <div class="section-heading">
           <div><span class="eyebrow">Pour commencer</span><h2>Lettre d’ouverture</h2></div>
@@ -224,9 +225,10 @@ En terminant, mon objectif est de développer une compréhension approfondie de 
 
 Je vous remercie de prendre le temps de consulter mon portfolio. J'espère qu'il représentera bien mon cheminement, mes apprentissages et les efforts que j'aurai consacrés à ce cours.
 <div> </div>
-Cordialement,<div> </div>
+Cordialement,<div> </div></p>
 
-<strong style="color: #8b1e3d;">Sarah Azar</strong></p>
+<span style="color: #74384e"><b>Sarah Azar</b></span>
+        </div>
         </div>
       </div>
     </section>
@@ -235,7 +237,8 @@ Cordialement,<div> </div>
       <div class="container">
         <div class="section-heading">
           <div><span class="eyebrow">Le cœur du portfolio</span><h2>Les cinq unités</h2></div>
-                 </div>
+          <p>Chaque unité aura sa propre page et réunira les quatre éléments demandés : scientifique ontarien, article scientifique, carrière et carte conceptuelle.</p>
+        </div>
         <div class="unit-grid">
           <a class="unit-card" href="biochimie.html"><span class="unit-number">01</span><h3>Biochimie cellulaire</h3><p>Les molécules et les réactions chimiques essentielles au vivant.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
           <a class="unit-card" href="metabolisme.html"><span class="unit-number">02</span><h3>Processus métaboliques</h3><p>Les transformations d’énergie et les réactions qui soutiennent la vie.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
@@ -293,5 +296,5 @@ Cordialement,<div> </div>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 <script src="portfolio-extras.js"></script>
-</body>
+<script src="wow-features.js"></script></body>
 </html>

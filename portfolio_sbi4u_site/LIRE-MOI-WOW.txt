@@ -1,0 +1,27 @@
+MISE À JOUR WOW FACTOR — PORTFOLIO SBI4U
+
+Cette mise à jour regroupe les améliorations visuelles et interactives demandées.
+
+FONCTIONNALITÉS AJOUTÉES
+1. Laboratoires visuels interactifs : modèle de cellule cliquable, mitochondrie et chloroplaste animés, ADN animé.
+2. Microscope virtuel : sélection de cellule animale, végétale ou bactérie.
+3. Parcours chronologique des cinq unités sur la page d’accueil.
+4. Système de découverte : faits surprises, curseur personnalisé, progression, animations et thème sombre déjà inclus dans les fichiers.
+5. Escape room : cinq énigmes couvrant les cinq unités, avec progression et validation.
+6. Simulation d’écosystème : curseurs pour ressources et prédation.
+7. Introduction cinématique : animation d’accueil facultative et bouton pour la passer.
+8. Simulation d’homéostasie et mini-expériences interactives.
+9. Certificat imprimable / exportable en PDF.
+
+INSTALLATION
+- Décompresse le ZIP.
+- Fais une copie de sauvegarde de ton dossier actuel.
+- Copie le contenu du dossier portfolio_sbi4u_site dans ton dossier de projet VS Code et choisis Remplacer si demandé.
+- Garde portfolio-extras.css, portfolio-extras.js et wow-features.js dans le même dossier que les pages HTML.
+- Lance index.html avec Live Server.
+
+IMPORTANT
+- Le code est autonome : aucun framework ni installation supplémentaire n’est requis.
+- Les modèles 3D sont des illustrations CSS interactives / animées, pas des modèles scientifiques manipulables en 3D réelle.
+- Les simulations sont des modèles pédagogiques simplifiés; elles ne représentent pas des données expérimentales.
+- Garde une copie de tes modifications personnelles avant de remplacer les fichiers. Vérifie aussi les contenus et les sources selon les consignes de ton enseignant.
