@@ -140,14 +140,24 @@
     @media(max-width:700px){.content-grid{grid-template-columns:1fr}.page-hero{width:calc(100% - 30px);margin-top:25px}.page-hero h1{font-size:2.8rem}}
 </style>
 <link rel="stylesheet" href="portfolio-extras.css">
+<script>
+  try {
+    if (localStorage.getItem('sbi4u-intro-seen') === 'true') {
+      document.documentElement.classList.add('return-visit');
+      window.addEventListener('DOMContentLoaded', () => {
+        if (!location.hash) location.hash = 'unites';
+      });
+    }
+  } catch (_) { /* The welcome remains available if browser storage is disabled. */ }
+</script>
 </head>
 <body><div class="cinematic-intro" id="cinematicIntro" role="dialog" aria-label="Bienvenue dans le portfolio SBI4U"><div class="intro-orbit orbit-one"></div><div class="intro-orbit orbit-two"></div><div class="intro-molecule">✧</div><p class="extra-kicker">Une exploration du vivant</p><h1>Bienvenue dans<br><em>mon univers biologique.</em></h1><p>Des molécules aux écosystèmes, découvrons les liens qui rendent la vie possible.</p><button class="extra-cta" id="enterPortfolio">Entrer dans le portfolio ✦</button><button class="intro-skip" id="skipIntro">Passer l’introduction</button></div>
   <header class="topbar">
     <div class="nav-wrap">
-      <a class="brand" href="#accueil" aria-label="Accueil du portfolio"><span class="brand-mark">✿</span><span>PORTFOLIO<br>SBI4U · BIOLOGIE</span></a>
+      <a class="brand" href="#unites" aria-label="Accueil du portfolio"><span class="brand-mark">✿</span><span>PORTFOLIO<br>SBI4U · BIOLOGIE</span></a>
       <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-controls="navLinks">☰ Menu</button>
       <nav class="nav-links" id="navLinks" aria-label="Navigation principale">
-        <a href="#accueil">Accueil</a>
+        <a href="index.html#unites">Accueil</a>
         <a href="#lettre">Lettre d’ouverture</a>
         <a href="#unites">Unités</a>
         <a href="#cours">Au-delà des unités</a>
@@ -200,7 +210,6 @@
       <div class="container">
         <div class="section-heading">
           <div><span class="eyebrow">Pour commencer</span><h2>Lettre d’ouverture</h2></div>
-          <p>Une introduction personnelle à mes intérêts, à mes objectifs et à ma façon d’apprendre.</p>
         </div>
         <div class="letter-panel">
           <div class="letter-icon" aria-hidden="true">✉</div>
@@ -246,7 +255,6 @@ Cordialement,<div> </div></p>
           <a class="unit-card" href="homeostasie.html"><span class="unit-number">04</span><h3>Homéostasie</h3><p>Les mécanismes qui contribuent au maintien de l’équilibre interne.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
           <a class="unit-card" href="populations.html"><span class="unit-number">05</span><h3>Dynamique des populations</h3><p>Les populations, leurs changements et leurs interactions avec l’environnement.</p><span class="card-link">Ouvrir l’unité ↗</span></a>
         </div>
-        <p class="note">Chaque carte ouvre une page indépendante pour cette unité. Les espaces de contenu sont prêts à être remplis au fil du cours.</p>
       </div>
     </section>
 
@@ -294,6 +302,13 @@ Cordialement,<div> </div></p>
       });
     });
     document.getElementById('year').textContent = new Date().getFullYear();
+    const intro = document.getElementById('cinematicIntro');
+    const dismissIntro = () => {
+      try { localStorage.setItem('sbi4u-intro-seen', 'true'); } catch (_) { /* Storage is optional. */ }
+      intro.classList.add('intro-leave');
+    };
+    document.getElementById('enterPortfolio').addEventListener('click', dismissIntro);
+    document.getElementById('skipIntro').addEventListener('click', dismissIntro);
   </script>
 <script src="portfolio-extras.js"></script>
 <script src="wow-features.js"></script></body>
